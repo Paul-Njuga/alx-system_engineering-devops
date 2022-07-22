@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 # This script displays "Best School" 10 times using for
-
 for (( start = 1; start <= 10; start++ ))
 do
    echo "Best School"
