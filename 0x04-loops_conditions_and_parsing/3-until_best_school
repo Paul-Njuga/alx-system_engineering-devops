@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# This script displays "Best School" 10 times using until
+
+COUNTER=10
+until [ $COUNTER -lt 1 ]
+do
+    echo "Holberton School"
+    let COUNTER-=1
+done
