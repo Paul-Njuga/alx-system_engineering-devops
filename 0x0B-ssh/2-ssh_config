@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # Configure ssh configuration file to authenticate using keys
 
-PubkeyAuthentication yes
-HashKnownHosts yes
-PasswordAuthentication no
-ChallengeResponseAuthentication no
-UsePAM no
-IdentityFile ~/.ssh/school
+Host *
+	PasswordAuthentication no
+	PubkeyAuthentication yes
+	IdentityFile ~/.ssh/school
+	HashKnownHosts yes
+	SendEnv LANG LC_*
