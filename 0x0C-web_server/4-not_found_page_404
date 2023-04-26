@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# 404 page
+
+sudo apt update -y
+sudo apt upgrade -y
+sudo apt-get install -y nginx
+ufw allow 'Nginx HTTP'
+echo 'Hello World!' > /var/www/html/index.nginx-debian.
+echo "Ceci n'est pas une page" > /usr/share/nginx/html/404.html
+sed -i '/listen \[::\]:80 default_server;/a rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
+sed -i '/listen \[::\]:80 default_server;/a error_page 404 /404.html;' /etc/nginx/sites-available/default
+sudo service nginx restart
