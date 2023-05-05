@@ -1,12 +1,5 @@
 #!/usr/bin/env bash
 # Debugs a Nginx server to listen on port 80
-
-echo "
-server {
-        listen 80 default_server;
-        listen [::]:80 default_server ipv6only=on;
-        root /usr/share/nginx/html;
-        index index.html index.htm;
-        server_name localhost;
-" >> /etc/nginx/sites-enabled/default
+rm /etc/nginx/sites-enabled/default
+ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 sudo systemctl restart nginx
