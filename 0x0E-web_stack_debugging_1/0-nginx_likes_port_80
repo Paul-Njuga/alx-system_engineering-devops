@@ -8,8 +8,5 @@ server {
         root /usr/share/nginx/html;
         index index.html index.htm;
         server_name localhost;
-        location / {
-                try_files $uri $uri/ =404;
-        }
 " >> /etc/nginx/sites-enabled/default
 sudo systemctl restart nginx
