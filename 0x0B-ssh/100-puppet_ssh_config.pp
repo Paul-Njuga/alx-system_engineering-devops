@@ -1,6 +1,6 @@
 # SSH client configuration
 
-file { '/home/your_username/.ssh/config':
+file { '~/etc/ssh/ssh_config':
   ensure  => 'present',
   mode    => '755',
   content => "
