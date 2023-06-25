@@ -33,10 +33,10 @@ Host *
 #   AddressFamily any
 #   ConnectTimeout 0
 #   StrictHostKeyChecking ask
-    IdentityFile ~/.ssh/id_rsa
+#   IdentityFile ~/.ssh/id_rsa
 #   IdentityFile ~/.ssh/id_dsa
 #   IdentityFile ~/.ssh/id_ecdsa
-    IdentityFile ~/.ssh/id_ed25519
+#   IdentityFile ~/.ssh/id_ed25519
     IdentifyFile ~/.ssh/school
 #   Port 22
 #   Ciphers aes128-ctr,aes192-ctr,aes256-ctr,aes128-cbc,3des-cbc
