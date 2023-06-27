@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Install nginx web server
+apt-get update
+apt-get install -y nginx
+# Allow nginx access through firewall
+ufw allow 'Nginx HTTP'
+# Edit conf to listen on port 80
+sed -i 's/listen\s*80;/listen 80 default_server;/g' /etc/nginx/sites-available/default
+service nginx restart
+echo '<h1>Hello World!<h1>' > /var/www/html/index.html
