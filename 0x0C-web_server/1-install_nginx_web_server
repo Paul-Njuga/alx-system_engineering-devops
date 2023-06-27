@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 # Install nginx web server
+
 apt-get update
-apt-get install -y nginx
+apt-get -y install nginx
 # Allow nginx access through firewall
 ufw allow 'Nginx HTTP'
 # Edit conf to listen on port 80
 sed -i 's/listen\s*80;/listen 80 default_server;/g' /etc/nginx/sites-available/default
+# Edit default ubuntu html page
+echo 'Hello World!' > /var/www/html/index.nginx-debian.html
 service nginx restart
-echo '<h1>Hello World!<h1>' > /var/www/html/index.html
