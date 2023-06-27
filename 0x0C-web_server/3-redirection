@@ -8,4 +8,4 @@ ufw allow 'Nginx HTTP'
 rdrct='server_name _;\n\trewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;'
 sed -i "s|server_name\s*_;|$rdrct|" /etc/nginx/sites-available/default
 echo 'Hello World!' > /var/www/html/index.nginx-debian.html
-service nginx start
+service nginx restart
