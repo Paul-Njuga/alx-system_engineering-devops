@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 # Install nginx web server
-
 apt-get update -y
 apt-get install nginx -y
 # Allow nginx access through firewall
