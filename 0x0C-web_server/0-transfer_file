@@ -3,6 +3,6 @@
 if [ $# -ne 4 ]; then
 	echo "Usage: $0 PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY"
 else
-	# Disable host chekcking on a one time basis use
+	# Disable host checking on a one time basis use
 	scp -o UserKnownHostsFile=/dev/null -i "$4" "$1" "$3@$2:~/"
 fi
