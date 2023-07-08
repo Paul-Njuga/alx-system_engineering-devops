@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# stop apache service
+sudo service apache2 stop
+# configure nginx
+sudo apt-get update
+sudo apt-get -y install nginx
+sudo ufw allow 'Nginx HTTP'
+sudo service nginx start
