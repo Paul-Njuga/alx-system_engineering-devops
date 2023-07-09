@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# Get domain info
+get_domain_info() {
+	local domain=$1
+	local subdomain=$2
+
+	if [[ -z $subdomain ]]; then
+		subs=("www" "lb-01" "web-01" "web-02")
+	else
+		subs=("$subdomain")
+	fi
+	for sub in "${subs[@]}"; do
+		rcd_typ=$(dig +noall +answer "$sub.$domain" | awk 'NR==1 {print $4}')
+		dst=$(dig +short "$sub.$domain" | awk 'NR==1 {print $1}')
+
+		echo "The subdomain $sub is a $rcd_typ record and points to $dst"
+	done
+}
+if [[ $# -lt 1 || $# -gt 2 ]]; then
+	echo "Usage: $0 domain [subdomain]"
+	exit 1
+fi
+
+# Pass script args to func
+domain=$1
+subdomain=$2
+get_domain_info "$domain" "$subdomain"
