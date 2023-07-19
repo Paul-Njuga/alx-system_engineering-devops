@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# Pswd check
+if [ $# -ne 1 ]; then
+	echo "Usage: $0 <mysql_password>"
+	exit 1
+fi
+
+mysql_pswd="$1"
+mysqldump -u root -p "${mysql_pswd}" --all-databases > backup.sql
+tar -czf "$(date +%d-%m-%Y).tar.gz" backup.sql
