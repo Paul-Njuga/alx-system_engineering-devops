@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Run command as another user
+
+# Argument check
+if [ $# -ne 1 ]; then
+	echo "Usage: $0 <user>"
+	exit 1
+fi
+usrnm=$1
+
+# User check
+if id "$usrnm" &>/dev/null; then
+	sudo -u "$usrnm" bash -c whoami
+fi
