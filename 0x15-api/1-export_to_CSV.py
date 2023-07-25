@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Gathers data from an API"""
+"""Exports to CSV"""
 
 if __name__ == "__main__":
     import csv
@@ -21,7 +21,7 @@ if __name__ == "__main__":
                 emp_name = usr["name"]
 
         with open("FILE.csv", "w") as f:
-            writer = csv.writer(f, quoting=csv.QUOTE_MINIMAL)
+            writer = csv.writer(f, quoting=csv.QUOTE_ALL)
             for td in tdlst:
                 if td["userId"] == int(emp_Id):
                     status = td["completed"]
