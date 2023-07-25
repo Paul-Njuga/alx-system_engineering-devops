@@ -14,15 +14,19 @@ if __name__ == "__main__":
     if emp_Id.isdigit():
         for usr in usrs:
             if usr["id"] == int(emp_Id):
-                tot_tsks = 0
-                tsks_dn = 0
-                for td in tdlst:
-                    if td["userId"] == int(emp_Id):
-                        tot_tsks += 1
-                        if td["completed"]:
-                            tsks_dn += 1
-                print("Employee {} is done with tasks({}/{}):\
-                    ".format(usr["name"], tsks_dn, tot_tsks))
+                name = usr["name"]
+
+        tot_tsks = 0
+        tsks_dn = []
+        for td in tdlst:
+            if td["userId"] == int(emp_Id):
+                tot_tsks += 1
+                if td["completed"]:
+                    tsks_dn.append(td["title"])
+        tsks_dn_vl = len(tsks_dn)
+
+        print("Employee {} is done with tasks({}/{}):\
+                ".format(name, tsks_dn_vl, tot_tsks))
         for td in tdlst:
             if td["userId"] == int(emp_Id) and td["completed"]:
                 print("\t {}".format(td["title"]))
