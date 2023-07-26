@@ -7,12 +7,11 @@ if __name__ == "__main__":
     from sys import argv
 
     usr_Id = argv[1]
-    usr_response = requests.get("https://jsonplaceholder.typicode.com/users/{}".format(usr_Id))
-    tdlst_response = requests.get("https://jsonplaceholder.typicode.com/todos?userId={}".format(usr_Id))
-    usr = usr_response.json()
-    tdlst = tdlst_response.json()
+    usr = requests.get("https://jsonplaceholder.typicode.com/users/{}\
+                                ".format(usr_Id)).json()
+    tdlst = requests.get("https://jsonplaceholder.typicode.com/todos?userId={}\
+                                  ".format(usr_Id)).json()
 
-    
     username = usr["username"]
 
     with open("USER_ID.csv", "w") as f:
