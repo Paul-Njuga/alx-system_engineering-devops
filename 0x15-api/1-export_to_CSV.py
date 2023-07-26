@@ -13,9 +13,9 @@ if __name__ == "__main__":
                        format(usr_Id)).json()
     username = usr.get("username")
 
-    with open(usr_Id + ".csv", "w") as f:
-        writer = csv.writer(f, quoting=csv.QUOTE_ALL)
+    with open(usr_Id + ".csv", "w") as csv_file:
+        f = csv.writer(csv_file, quoting=csv.QUOTE_ALL)
         for td in tds:
             status = td.get("completed")
             title = td.get("title")
-            writer.writerow([usr_Id, username, status, title])
+            f.writerow([usr_Id, username, status, title])
