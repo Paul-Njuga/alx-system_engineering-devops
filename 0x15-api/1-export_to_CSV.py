@@ -6,21 +6,18 @@ if __name__ == "__main__":
     import requests
     from sys import argv
 
-    usrs_response = requests.get("https://jsonplaceholder.typicode.com/users")
-    tdlst_response = requests.get("https://jsonplaceholder.typicode.com/todos")
-    usrs = usrs_response.json()
+    usr_Id = argv[1]
+    usr_response = requests.get("https://jsonplaceholder.typicode.com/users/{}".format(usr_Id))
+    tdlst_response = requests.get("https://jsonplaceholder.typicode.com/todos?userId={}".format(usr_Id))
+    usr = usr_response.json()
     tdlst = tdlst_response.json()
-    emp_Id = argv[1]
 
-    if emp_Id.isdigit():
-        for usr in usrs:
-            if usr["id"] == int(emp_Id):
-                emp_name = usr["name"]
+    
+    username = usr["username"]
 
-        with open("USER_ID.csv", "w") as f:
-            writer = csv.writer(f, quoting=csv.QUOTE_ALL)
-            for td in tdlst:
-                if td["userId"] == int(emp_Id):
-                    status = td["completed"]
-                    title = td["title"]
-                    writer.writerow([emp_Id, emp_name, status, title])
+    with open("USER_ID.csv", "w") as f:
+        writer = csv.writer(f, quoting=csv.QUOTE_ALL)
+        for td in tdlst:
+            status = td["completed"]
+            title = td["title"]
+            writer.writerow([usr_Id, username, status, title])
