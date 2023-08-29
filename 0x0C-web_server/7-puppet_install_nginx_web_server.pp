@@ -16,6 +16,14 @@ file_line { 'Add redirection, 301':
 }
 
 service { 'nginx':
-  ensure  => running,
-  require => Package['nginx'],
+  ensure     => running,
+  enable     => true,
+  hasrestart => true,
+  hasstatus  => true,
+}
+
+exec { 'reload_nginx':
+	command => '/usr/sbin/nginx -s reload',
+	refreshonly => true,
+	require => Service['nginx'],
 }
