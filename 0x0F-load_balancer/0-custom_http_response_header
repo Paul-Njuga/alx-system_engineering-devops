@@ -12,9 +12,10 @@ rdrct='server_name _;\n\trewrite ^/redirect_me https://www.youtube.com/watch?v=Q
 sed -i "s|server_name\s*_;|$rdrct|" /etc/nginx/sites-available/default
 
 cst_hdr="listen [::]:80 default_server;\n\tadd_header X-Served-By $HOSTNAME;"
-sed -i "s|listen \[::\]:80 default_server;|$cst_hdr|" /etc/nginx/sites-available/default
+sed -i "s|listen \[::\]:80 default_server;|$cst_hdr|" /etc/nginx/sites-enabled/default
 
-echo "Ceci n'est pas une page" > /usr/share/nginx/html/custom_404.html
+echo "Ceci n'est pas une page
+" > /usr/share/nginx/html/custom_404.html
 
 err_pg="listen [::]:80 default_server;\n\terror_page 404 /custom_404.html;\n\tlocation = /custom_404.html {\n\t\troot /usr/share/nginx/html;\n\t\tinternal;\n\t}"
 sed -i "s|listen \[::\]:80 default_server;|$err_pg|" /etc/nginx/sites-enabled/default
