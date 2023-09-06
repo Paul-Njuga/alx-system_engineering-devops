@@ -14,11 +14,26 @@ service { 'nginx':
   enable => true,
 }
 
-file_line { '301_redirection':
-  ensure => 'present',
-  path   => '/etc/nginx/sites-available/default',
-  after  => 'server_name _;',
-  line   => '\trewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;',
+file { '/etc/nginx/sites-available/default':
+  ensure => file,
+  content => @(EOF)
+    server {
+	  listen 80 default_server;
+	  listen [::]:80 default_server;
+
+	  root /var/www/html;
+	  index index.html index.htm index.nginx-debian.html;
+
+	  server_name _;
+
+	  # 301 redirect_me
+      rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;
+
+	  location / {
+          try_files $uri $uri/ =404;
+      }
+	}
+  EOF
 }
 
 # Enable site
