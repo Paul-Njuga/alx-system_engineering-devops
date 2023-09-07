@@ -3,4 +3,4 @@
 
 ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 sudo service nginx restart
-kill -9 "$(cat /var/run/nginx.pid)"
+kill "$(pgrep 'nginx' | head -1)"
