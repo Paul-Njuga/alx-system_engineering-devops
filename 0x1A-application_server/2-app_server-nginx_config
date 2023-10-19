@@ -1,10 +1,10 @@
 # Default server configuration
 #
 server {
-        listen 80 default_server;
-        listen [::]:80 default_server;
+        listen 80;
+        listen [::]:80;
 
-        server_name _;
+        server_name 18.204.16.34;
         add_header X-Served-By $HOSTNAME;
 
         root /var/www/html;
