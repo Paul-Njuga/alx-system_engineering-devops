@@ -29,7 +29,6 @@ server {
         }
 
         location /airbnb-onepage/ {
-				add_header X-Served-By 12247-web-01;
                 proxy_pass http://127.0.0.1:5000/airbnb-onepage/;
         }
 
