@@ -1,10 +1,10 @@
 # Default server configuration
 #
 server {
-        listen 80;
-        listen [::]:80;
+        listen 80 default_server;
+        listen [::]:80 default_server;
 
-        server_name 18.204.16.34;
+        server_name _;
         add_header X-Served-By $HOSTNAME;
 
         root /var/www/html;
@@ -29,8 +29,7 @@ server {
         }
 
         location /airbnb-onepage/ {
-                include proxy_params;
-                proxy_pass http://127.0.0.1:5000;
+                proxy_pass http://127.0.0.1:5000/airbnb-onepage/;
         }
 
         rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;
